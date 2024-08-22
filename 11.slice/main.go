@@ -10,7 +10,7 @@ func main() {
 
 	// 🔥 uninitilized slice is nil
 	var student []int
-	fmt.Println(student == nil)
+	fmt.Println(student == nil) // return true
 	fmt.Println(len(student))
 
 	// 🔥 declare & initilize slice

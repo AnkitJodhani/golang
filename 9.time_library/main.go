@@ -10,4 +10,5 @@ func main() {
 	fmt.Println(time.Now())           // return current time
 	fmt.Println(time.Now().Weekday()) // return name of the day
 	fmt.Println(time.Monday)          // return current date
+	// fmt.Println(time.Time)            // return current date
 }
