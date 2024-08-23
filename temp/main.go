@@ -2,16 +2,36 @@ package main
 
 import "fmt"
 
-func accumulator() func(int) int {
-	sum := 0
-	return func(x int) int {
-		sum += x
-		return sum
-	}
+type Paymenter interface {
+	pay()
+}
+
+type Payment struct {
+	gateway Paymenter
+}
+
+type Razorpay struct {
+	amount float32
+}
+
+func (r Razorpay) pay() {
+	fmt.Println("Doing payment through Razorpay")
+}
+
+type Stripe struct {
+	amount float32
+}
+
+func (s Stripe) pay() {
+	fmt.Println("Doing payment through Stripe")
 }
 
 func main() {
-	a := accumulator()
-	fmt.Println(a(1))
-	fmt.Println(a(2))
+	//
+	razorPayGW := Razorpay{amount: 202}
+	stripePayGW := Stripe{amount: 202}
+	PaymentOne := Payment{gateway: razorPayGW}
+	PaymentTwo := Payment{gateway: stripePayGW}
+	PaymentOne.gateway.pay()
+	PaymentTwo.gateway.pay()
 }
