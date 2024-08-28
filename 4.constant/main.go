@@ -6,7 +6,7 @@ const age = 90
 
 var name string = "Ankit"
 
-// name:= "Ankit" // this syntax not allowed in global space
+// name:= "Ankit" //  "short variable declaration"  syntax not allowed in global space
 
 func main() {
 
@@ -20,5 +20,5 @@ func main() {
 		cpu        = 4
 		hostname   = "localhost"
 	)
-	fmt.Println(portNumber, cpu, hostname) 
+	fmt.Println(portNumber, cpu, hostname)
 }

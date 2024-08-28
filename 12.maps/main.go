@@ -27,7 +27,7 @@ func main() {
 	fmt.Println(marks["keyDoesNotExist"]) // return zero
 
 	teacher := make(map[string]bool) // declare & initilize with NO KEY
-	// var teacher map[string]bool} // only declare it so it is pointing to nil -> can give runtime error
+	// var teacher map[string]bool   // declare
 	// var teacher = map[string]bool{"key1": true} // declare & initilize with key-value
 	teacher["key1"] = true
 	fmt.Println(teacher)
