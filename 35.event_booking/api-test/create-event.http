@@ -1,0 +1,9 @@
+POST http://localhost:8080/events
+Content-Type: application/json
+
+{
+    "name": "Navaratri",
+    "location": "vadodara",
+    "Description": "Biggest festival in gujrat",
+    "datetime": "2025-01-01T15:30:00.000Z"
+}

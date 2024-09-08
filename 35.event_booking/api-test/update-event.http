@@ -1,0 +1,9 @@
+PUT http://localhost:8080/events/3
+Content-Type: application/json
+
+{
+    "name": "Ganesha",
+    "location": "Mumbai",
+    "Description": "Biggest festival in Mumbai",
+    "datetime": "2025-03-01T15:30:00.000Z"
+}
