@@ -1,9 +1,10 @@
 POST http://localhost:8080/events
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRldmFuc2hpLmNvbSIsImV4cCI6MTcyNjA3OTc5NywidXNlcklEIjoxfQ.hy5OBwL7SwXDMeia98eGlRNF0XoRsJoc2Bo71x1qCWU
 
 {
     "name": "Navaratri",
-    "location": "vadodara",
-    "Description": "Biggest festival in gujrat",
+    "location": "USA",
+    "Description": "Biggest festival of Kubernetes",
     "datetime": "2025-01-01T15:30:00.000Z"
 }

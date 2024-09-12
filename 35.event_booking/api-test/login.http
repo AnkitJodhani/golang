@@ -1,0 +1,12 @@
+POST http://localhost:8080/login
+Content-Type: application/json
+
+# {
+#     "email_id":"ankitjodhani.com",
+#     "password":"ankit"
+# }
+
+{
+    "email_id":"devanshi.com",
+    "password":"devanshi"
+}

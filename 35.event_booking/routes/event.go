@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -40,9 +39,10 @@ func getEvent(context *gin.Context) {
 }
 
 func createEvent(context *gin.Context) {
+
 	var event models.Event
-	fmt.Println(event)
 	err := context.ShouldBindJSON(&event)
+	event.UserID = context.GetInt64("userID") // getting the data - but make sure userID should be integer
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{
 			"message": "Couldn't able to parse the data",
@@ -73,12 +73,22 @@ func updateEvent(context *gin.Context) {
 		})
 		return
 	}
-	_, err = models.GetEventByID(eventID)
+
+	userIDFromJWT := context.GetInt64("userID") // get from JWT token
+
+	retrivedEvent, err := models.GetEventByID(eventID)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{
-			"message": "Unable to get the Event details",
+			"message": "Unable to get the Event details or maynot exist",
 			"error":   err,
+		})
+		return
+	}
+
+	if userIDFromJWT != retrivedEvent.UserID {
+		context.JSON(http.StatusBadRequest, gin.H{
+			"message": "you can't update this event because you have not created it",
 		})
 		return
 	}
@@ -117,12 +127,22 @@ func deleteEvent(context *gin.Context) {
 		})
 		return
 	}
-	_, err = models.GetEventByID(eventID)
+
+	userIDFromJWT := context.GetInt64("userID") // get from JWT token
+
+	retrivedEvent, err := models.GetEventByID(eventID)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{
 			"message": "Event might not exist",
 			"error":   err,
+		})
+		return
+	}
+
+	if userIDFromJWT != retrivedEvent.UserID {
+		context.JSON(http.StatusBadRequest, gin.H{
+			"message": "you can't delete this event because you have not created it",
 		})
 		return
 	}
